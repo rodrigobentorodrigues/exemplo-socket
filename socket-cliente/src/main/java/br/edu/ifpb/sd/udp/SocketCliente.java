@@ -19,6 +19,7 @@ public class SocketCliente {
         // Criando o socket e informando o endereço para quem vai a mensagem
         try (DatagramSocket socket = new DatagramSocket()) {
             InetAddress destino = InetAddress.getByName("host-socket");
+//            InetAddress destino = InetAddress.getByName("localhost");
             
             // Criando a mensagem e a enviando
             byte[] mensagem = "Teste".getBytes();
@@ -28,7 +29,7 @@ public class SocketCliente {
             System.out.println("Enviada");
             
             // Criando o pacote e aguardando a resposta
-            byte[] msg = new byte[100];
+            byte[] msg = new byte[1024];
             DatagramPacket pct = new DatagramPacket(msg, msg.length);
             socket.receive(pct);
             
